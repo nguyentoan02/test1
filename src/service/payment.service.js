@@ -35,11 +35,11 @@ export const create = async (userId, packageId) => {
 export const webHook = async (webhookData) => {
     const { data } = webhookData;
 
-    // BƯỚC 1: Bỏ qua webhook test từ PayOS
-    if (data.orderCode === 123 || data.orderCode === "123") {
-        console.log("PayOS test webhook received, ignoring...");
-        return { success: true, message: "Test webhook ignored" };
-    }
+    // // BƯỚC 1: Bỏ qua webhook test từ PayOS
+    // if (data.orderCode === 123 || data.orderCode === "123") {
+    //     console.log("PayOS test webhook received, ignoring...");
+    //     return { success: true, message: "Test webhook ignored" };
+    // }
 
     const payment = await Payment.findOne({ orderCode: data.orderCode });
     if (!payment) {
